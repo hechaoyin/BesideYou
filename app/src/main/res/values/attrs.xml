@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 九宫格圆形图片 -->
+    <declare-styleable name="NineGridImageView">
+        <!-- 九宫格内圆形图片间距 -->
+        <attr name="imgGap" format="dimension" />
+    </declare-styleable>
+</resources>

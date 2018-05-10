@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_chat_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:background="#24000000"
+        android:text="时间"
+        android:textSize="12sp"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal">
+
+        <!-- 头像 -->
+        <com.example.hbz.besideyou.view.CircleImageView
+            android:id="@+id/iv_msg_face"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_login_face" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_msg_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="10dp"
+                android:text="名字"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/ll_message_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/balloon_l"
+                android:gravity="left"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <!-- 文本消息开始 -->
+                <TextView
+                    android:id="@+id/tv_msg_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="啦啦"
+                    android:textSize="14sp"/>
+                <!-- 文本消息结束 -->
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shape_login_focus_btn" android:state_enabled="false" />
+    <item android:drawable="@drawable/shape_login_focus_btn" android:state_pressed="true" />
+    <!-- pressed -->
+    <item android:drawable="@drawable/shape_login_focus_btn" android:state_focused="true" />
+    <!-- focused -->
+    <item android:drawable="@drawable/shape_login_normal_btn" />
+    <!-- default -->
+
+</selector>

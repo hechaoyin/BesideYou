@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">BesideYou</string>
+
+    <string name="action_settings">设置</string>
+
+    <!-- 登录相关的字符串 -->
+    <string name="title_activity_login">Sign in</string>
+    <string name="login">登录</string>
+    <string name="prompt_user">账号</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="vertify_code_str">检验码</string>
+    <string name="get_verify_code">获取验证码</string>
+    <string name="please_input_user">请输入用户名</string>
+    <string name="rule_password">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`¬!"£$%^*()~=#{}[];':,./?/*-_+&#060;&#062;&#064;&#038;</string><!-- 密码允许字符 -->
+    <string name="input_password_hint">请输入8-16位密码</string>
+    <string name="new_user_register">新用户注册</string>
+    <string name="forgot_password_str">忘记密码</string>
+    <string name="menu_log_in">登录</string>
+    <string name="menu_log_out">退出</string>
+
+    <string name="start_floatingBall">悬浮球用于xxxxxxxxxx</string>
+    <string name="laboratory">实验室</string>
+    <string name="homepage">主页</string>
+    <string name="setting">设置</string>
+
+    <!--通信录界面-->
+    <string name="main_address_book">通信录</string>
+
+    <string name="main_home">主页</string>
+    <string name="main_message">消息</string>
+    <string name="tab_main_home">主页</string>
+    <string name="tab_main_message">消息</string>
+    <string name="tab_main_address">联系人</string>
+    <string name="tab_main_mine">我的</string>
+
+    <!--我的-->
+    <string name="logout_str">退出登录</string>
+    <string name="setting_str">设置</string>
+    <string name="about_us_str">关于我们</string>
+    <string name="about_laboratory">实验室</string>
+
+    <string name="offline_notification_title">离线通知</string>
+    <string name="offline_force_offline">　　您的账号在其设备登录，导致您被踢下线。请重新登录</string>
+    <string name="offline_user_sig_expired">　　您的登录票据已过期，请重新登录</string>
+    <string name="restart_login">重新登录</string>
+    <string name="goto_login_activity">跳转到登录界面</string>
+    <string name="personal_information">个人信息</string>
+    <string name="brush_size">画笔大小:</string>
+    <string name="brush_color">画笔颜色:</string>
+    <string name="other_function">其他功能:</string>
+    <string name="more_function">更多功能</string>
+    <string name="save_doodle">保存涂鸦图片</string>
+    <string name="quit_doodle">退出涂鸦</string>
+    <string name="select_picture">相册图片</string>
+    <string name="select_camera">相机图片</string>
+    <string name="back_reset_advace_function">撤销、重置、前进</string>
+    <string name="select_bg">选择背景（纯色、相机图片、相册图片）</string>
+    <string name="select_color">选择颜色</string>
+    <string name="confirm_str">确定</string>
+    <string name="tip_select_bg_color">注意： 更换背景后，涂鸦也将清空</string>
+    <string name="create_room">创建房间</string>
+    <string name="select_join_from_room_tip">是否允许通过房间号加入房间</string>
+    <string name="select_join_from_other_tip">是否允许房间其他人邀请进入</string>
+    <string name="invite_friends">邀请好友</string>
+    <!--基本信息界面-->
+    <string name="id_identification">账号：</string>
+    <string name="gender">性别：</string>
+    <string name="phone_number">手机号：</string>
+    <string name="birthday">生日：</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="repetition_password">确认密码</string>
+    <string name="register">注册</string>
+    <string name="send_message">发送消息</string>
+    <string name="add_friend">添加好友</string>
+    <string name="new_password">新密码</string>
+    <string name="change_password">更改密码</string>
+    <string name="please_input_phone">请输入手机号码</string>
+    <string name="please_input_vertify_code">请输入检验码</string>
+    <string name="register_by_str">通过账号密码</string>
+    <string name="register_by_phone">通过手机注册</string>
+    <string name="search">搜索</string>
+    <string name="web_socket_address_input">请输入服务器地址</string>
+    <string name="web_socket_room_input">请输入加入的房间</string>
+    <string name="add_room">加入房间</string>
+    <string name="offline_doodle">离线涂鸦</string>
+</resources>

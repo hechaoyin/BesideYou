@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><!--指定共享的目录-->
+<paths>
+    <external-path
+        name="beside_you_root"
+        path="BesideYou" />
+</paths>

@@ -1,0 +1,190 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="44dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_translucence_white"
+        android:backgroundTint="@color/translucence_black">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_login_face" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_text_white_gray">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/prompt_user"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_login_user"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@string/please_input_user"
+                        android:maxLength="24"
+                        android:maxLines="1"
+                        android:text="test01"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_clear_user"
+                        android:layout_width="44dp"
+                        android:layout_height="match_parent"
+                        android:padding="14dp"
+                        android:src="@drawable/ic_clear"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shape_text_white_gray"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/prompt_password"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_login_password"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:digits="@string/rule_password"
+                        android:hint="@string/input_password_hint"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:text="hebizhi88"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_clear_password"
+                        android:layout_width="44dp"
+                        android:layout_height="match_parent"
+                        android:padding="14dp"
+                        android:src="@drawable/ic_clear"
+                        android:visibility="gone" />
+                </LinearLayout>
+                <!-- 检验码-->
+                <LinearLayout
+                    android:id="@+id/ll_login_vertical_identify"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shape_text_white_gray"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginStart="16dp"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/vertify_code_str"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/et_login_verification_code"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:inputType="number"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_login_img_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/selector_login_button"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/tv_new_user_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_user_register"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/common_font_size_mid_14" />
+
+                <TextView
+                    android:id="@+id/tv_forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/forgot_password_str"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/common_font_size_mid_14" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

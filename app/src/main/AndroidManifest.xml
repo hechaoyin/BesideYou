@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.hbz.besideyou">
+
+    <!-- 悬浮球所需要权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".BesideYouApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 兼容7.0后，FileProvider类 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.hbz.besideyou.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- 测试界面 -->
+        <activity android:name=".aatest.AAActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 登录界面 -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme" />
+
+        <!-- 主界面 -->
+        <activity android:name=".activity.MainActivity" />
+
+        <!-- 涂鸦界面 -->
+        <activity
+            android:name=".activity.DoodleActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/NoTitleFullScreen" />
+        <activity
+            android:name=".activity.OffLineActivity"
+            android:theme="@style/NoTitleFullScreen.Translucence" />
+        <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.FriendInfoActivity" />
+        <activity android:name=".aatest.WebRtcTestActivity" />
+        <activity android:name=".activity.DoodleCreateRoomActivity" />
+        <activity android:name=".activity.DoodleCreateTipActivity" />
+        <activity android:name=".activity.MyInfoActivity" />
+        <activity android:name=".activity.RegisterStrActivity" />
+        <activity android:name=".activity.RegisterPhoneActivity" />
+        <activity android:name=".activity.ForgetPasswordActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.SelectFriendActivity" />
+        <activity android:name=".activity.GroupContactsActivity" />
+        <activity android:name=".activity.DoodleJoinRoomActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/modify_friend_notes"
+        android:title="修改备注" />
+    <item
+        android:id="@+id/delete_friend"
+        android:title="删除好友" />
+    <item
+        android:id="@+id/put_on_blacklist"
+        android:title="加入黑名单" />
+</menu>

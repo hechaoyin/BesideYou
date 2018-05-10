@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--文字尺寸-->
+    <dimen name="common_font_size_mid_14">14sp</dimen>
+    <dimen name="common_font_size_sm_12">12sp</dimen>
+    <dimen name="common_font_size_sm_10">10sp</dimen>
+    <dimen name="common_font_size_big_20">20sp</dimen>
+    <dimen name="common_font_size_mid_16">16sp</dimen>
+
+    <!--RecycleView头部的大小尺寸-->
+    <dimen name="header_divider_height">0dp</dimen>
+    <dimen name="header_height">24dp</dimen>
+    <dimen name="header_text_size">16sp</dimen>
+    <dimen name="header_text_offset_x">8dp</dimen>
+
+</resources>

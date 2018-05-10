@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="translucence_white">#6FFFFFFF</color>
+    <color name="translucence_blue">#6F0099EE</color>
+    <color name="translucence_black">#0F000000</color>
+
+    <!-- 蓝色Title 渐变色-->
+    <color name="blue_start">#FF0077EE</color>
+    <color name="blue_end">#FF00AAEE</color>
+
+    <!-- app中通用灰色线条颜色 -->
+    <color name="common_line_gray">#42000000</color>
+
+    <!-- 文字 -->
+    <color name="common_font_gray">#66000000</color>
+    <!-- app中通用的黑色字体颜色 -->
+    <color name="common_font_black">#DE000000</color>
+
+    <!-- app中通用的蓝色背景 -->
+    <color name="blue">#FF0099EE</color>
+    <color name="red">#f00</color>
+    <color name="common_base_head">#FFF9F9F9</color>
+
+    <!-- app中通用的灰色背景 -->
+    <color name="common_bg_gray">#FFEEEEEE</color>
+
+    <!-- MainActivity tab 文字颜色-->
+    <color name="main_tab_text">#FF8A8A8A</color>
+    <color name="gray">#ffbfbfbf</color>
+
+
+</resources>
