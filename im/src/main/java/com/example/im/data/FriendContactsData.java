@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * @ClassName: 存储所有好友的信息
+ * @ClassName: 存储所有好友的信息，通知主题（刷新数据、添加好友、删除好友）
  * @Description:
  * @Author: HBZ
  * @Date: 2018/5/10 10:44
@@ -23,8 +23,9 @@ public class FriendContactsData extends Observable {
 
     private HashMap<String, TIMUserProfile> friendContacts = new HashMap<>();
 
+    private boolean isLoadData = false;// 是否正在加载联系人数据
+
     private FriendContactsData() {
-        initContacts();
     }
 
     public static FriendContactsData getInstance() {
@@ -38,7 +39,15 @@ public class FriendContactsData extends Observable {
         return instance;
     }
 
+    public void init() {
+        initContacts();
+    }
+
     private void initContacts() {
+        if (isLoadData) {
+            return;
+        }
+        isLoadData = true;
         Log.d(TAG, "获取好友列表: ");
         //获取好友列表
         TIMFriendshipManager.getInstance().getFriendList(new TIMValueCallBack<List<TIMUserProfile>>() {
@@ -47,6 +56,7 @@ public class FriendContactsData extends Observable {
                 //，错误码code和错误描述desc可用于定位请求失败原因
                 //错误码code列表请参见错误码表
                 Log.e(TAG, "获取好友列表失败: " + code + " desc");
+                isLoadData = false;
             }
 
             @Override
@@ -60,6 +70,7 @@ public class FriendContactsData extends Observable {
                 }
                 setChanged();
                 notifyObservers(new NotifyCmd(NotifyType.REFRESH, null));
+                isLoadData = false;
             }
         });
     }
@@ -90,8 +101,8 @@ public class FriendContactsData extends Observable {
     }
 
     public enum NotifyType {
-        REFRESH,//刷新数据
-        ADD,//添加好友
-        DEL//删除好友
+        REFRESH, // 刷新数据
+        ADD, // 添加好友
+        DEL // 删除好友
     }
 }

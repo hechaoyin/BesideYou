@@ -75,6 +75,16 @@ public class ContactsFragment extends BaseFragment implements OnItemClickListene
         FriendContactsData.getInstance().addObserver(this);
     }
 
+    @Override
+    public void onDestroy() {
+        EventBus eventBus = EventBus.getDefault();
+        if (eventBus.isRegistered(this)) {
+            eventBus.unregister(this);//解除订阅EventBus
+        }
+        FriendContactsData.getInstance().deleteObserver(this);
+        super.onDestroy();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -287,16 +297,6 @@ public class ContactsFragment extends BaseFragment implements OnItemClickListene
     @Subscribe(threadMode = ThreadMode.MAIN) //在ui线程执行
     public void onNotifyContactsEvent(ContactsEvent event) {
         FriendContactsData.getInstance().onRefreshData();
-    }
-
-    @Override
-    public void onDestroy() {
-        EventBus eventBus = EventBus.getDefault();
-        if (eventBus.isRegistered(this)) {
-            eventBus.unregister(this);//解除订阅EventBus
-        }
-        FriendContactsData.getInstance().deleteObserver(this);
-        super.onDestroy();
     }
 
     @Override

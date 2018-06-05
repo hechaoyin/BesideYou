@@ -13,7 +13,7 @@
         android:layout_marginBottom="12dp"
         android:layout_marginTop="12dp"
         android:background="#24000000"
-        android:text="时间"
+        android:text=""
         android:textSize="12sp"
         android:visibility="visible" />
 
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:layout_marginLeft="10dp"
-                android:text="名字"
+                android:text=""
                 android:visibility="visible" />
 
             <LinearLayout

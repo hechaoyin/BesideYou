@@ -55,7 +55,6 @@ public class NineGridImageView<T> extends ViewGroup {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         parentWidth = measureWidth(widthMeasureSpec);
         parentHeight = measureHeight(heightMeasureSpec);
-
         setMeasuredDimension(parentWidth, parentHeight);
     }
 

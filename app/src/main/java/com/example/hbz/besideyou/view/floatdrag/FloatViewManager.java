@@ -2,6 +2,7 @@ package com.example.hbz.besideyou.view.floatdrag;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -40,8 +41,6 @@ public class FloatViewManager {
         if (windowManager == null) {
             return;
         }
-        //初始化状态栏的方法
-        initStatusBarHelperView();
 
         //初始化LayoutParams
         getFloatBallParams();
@@ -72,11 +71,23 @@ public class FloatViewManager {
 
     public WindowManager.LayoutParams getFloatBallParams() {
         if (floatBallParams == null) {
-            floatBallParams = new WindowManager.LayoutParams();
-            floatBallParams.width = floatBall.width;
-            floatBallParams.height = floatBall.height;
+            int w = WindowManager.LayoutParams.MATCH_PARENT;
+            int h = WindowManager.LayoutParams.MATCH_PARENT;
+            int flags = 0;
+            int type;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                //解决Android 7.1.1起不能再用Toast的问题（先解决crash）
+                if (Build.VERSION.SDK_INT > 24) {
+                    type = WindowManager.LayoutParams.TYPE_PHONE;
+                } else {
+                    type = WindowManager.LayoutParams.TYPE_TOAST;
+                }
+            } else {
+                type = WindowManager.LayoutParams.TYPE_PHONE;
+            }
+            floatBallParams = new WindowManager.LayoutParams(w, h, type, flags, PixelFormat.TRANSLUCENT);
+
             floatBallParams.gravity = Gravity.LEFT | Gravity.TOP;
-            floatBallParams.type = WindowManager.LayoutParams.TYPE_PHONE;
             floatBallParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL; // 不阻塞事件传递到后面的窗口
             floatBallParams.format = PixelFormat.RGBA_8888;
 
@@ -94,34 +105,13 @@ public class FloatViewManager {
         return windowManager.getDefaultDisplay().getWidth();
     }
 
-    //=====================获取状态栏宽高方法begin============================//
-    private View mStatusBarHelperView;
 
-    private void initStatusBarHelperView() {
-        mStatusBarHelperView = new View(context);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        // 不可触摸，不可获得焦点
-        lp.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-        //放在左上角
-        lp.gravity = Gravity.LEFT | Gravity.TOP;
-        // 需要在manifest里申明android.permission.SYSTEM_ALERT_WINDOW权限
-        lp.type = WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY;
-        lp.format = PixelFormat.TRANSLUCENT;
-        windowManager.addView(mStatusBarHelperView, lp);
+    private int getStatusBarHeight() {
+        int height = 0;
+        int resId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resId > 0) {
+            height = context.getResources().getDimensionPixelSize(resId);
+        }
+        return height;
     }
-    private void removeStatusBarHelperView(){
-        windowManager.removeView(mStatusBarHelperView);
-        mStatusBarHelperView = null;
-    }
-
-    private int getStatusBarHeight(){
-        int[] windowParams = new int[2];
-        int[] screenParams = new int[2];
-        mStatusBarHelperView.getLocationInWindow(windowParams);
-        mStatusBarHelperView.getLocationOnScreen(screenParams);
-        // 如果状态栏隐藏，返回0，如果状态栏显示则返回高度
-        return screenParams[1] - windowParams[1];
-    }
-    //=====================获取状态栏宽高方法end============================//
 }

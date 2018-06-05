@@ -34,7 +34,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
     private RecyclerView rv_main_card;
     private MainCardAdapter cardAdapter;
     private List<CardItemBean> cardList = new ArrayList<>();
-    private List<Intent> cardOnClickIntents = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,24 +69,16 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
         cardList.add(new CardItemBean(R.drawable.ic_remote_assistance, "远程协助", "远程操控手机，协助处理问题。"));
         cardList.add(new CardItemBean(R.drawable.ic_game, "互娱游戏", "同屏游戏，娱乐放松"));
 
-
-        //添加Item点击事件
-        cardOnClickIntents.add(new Intent(getContext(), DoodleCreateTipActivity.class));
-
         cardAdapter.notifyDataSetChanged();
     }
 
 
     @Override
     public void onItemClick(View view, int position) {
-        if (cardOnClickIntents == null || cardOnClickIntents.size() <= position) {
+        if (position == 0) { // 同屏涂鸦
+            startActivity(new Intent(getActivity(), DoodleCreateTipActivity.class));
+        } else {
             ToastUtil.showShortToast("功能未开放" + position);
-            return;
         }
-        Intent intent = cardOnClickIntents.get(position);
-        if (intent == null) {
-            return;
-        }
-        startActivity(intent);
     }
 }

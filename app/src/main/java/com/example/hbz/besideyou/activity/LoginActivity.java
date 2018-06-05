@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.hbz.besideyou.BastActivity;
 import com.example.hbz.besideyou.R;
 import com.example.hbz.besideyou.tools.AccountSPTool;
+import com.example.hbz.besideyou.utils.DialogUtil;
 import com.example.hbz.besideyou.utils.LogUtil;
 import com.example.hbz.besideyou.utils.ToastUtil;
 import com.tencent.TIMCallBack;
@@ -231,6 +232,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
             LogUtil.d("手机登录" + user);
         }
 
+        DialogUtil.showProgressDialog(this,"登录中...");
         /**登录*/
         loginQAL(user, password);
     }
@@ -261,6 +263,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
                     /* 请求刷新图片验证码成功，此时需要用picData 更新验证码图片，原先的验证码已经失效*/
                 LogUtil.d("刷新检验码");
                 upDateImgCode(picData);
+                DialogUtil.closeProgressDialog();
             }
 
             @Override
@@ -270,6 +273,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
                 LogUtil.d("需要检验码");
                 ToastUtil.showShortToast("验证码错误,请重新输入");
                 upDateImgCode(picData);
+                DialogUtil.closeProgressDialog();
             }
 
             @Override
@@ -278,6 +282,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
                     通过errInfo.ErrCode, errInfo.Title, errInfo.Msg等可以得到更具体的错误信息*/
                 LogUtil.e("登录错误:" + errInfo.ErrCode + "\n" + errInfo.Title + "\n" + errInfo.Msg);
                 ToastUtil.showLongToast("登录错误:" + errInfo.Msg);
+                DialogUtil.closeProgressDialog();
             }
 
             @Override
@@ -285,6 +290,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
                     /* 密码登录过程中任意一步都可以到达这里，顾名思义，网络超时，可能是用户网络环境不稳定，
                     一般让用户重试即可*/
                 LogUtil.d("网络超时");
+                DialogUtil.closeProgressDialog();
             }
         };
     }
@@ -330,6 +336,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
                         ToastUtil.showShortToast("登录成功");
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         accountSPTool.saveUserAndPaw(et_login_user.getText().toString(), et_login_password.getText().toString());
+                        DialogUtil.closeProgressDialog();
                         finish();
                     }
 
@@ -338,6 +345,7 @@ public class LoginActivity extends BastActivity implements View.OnClickListener,
                         //错误码code和错误描述desc，可用于定位请求失败原因
                         //错误码code含义请参见错误码表
                         LogUtil.d("login failed. code: " + code + " errmsg: " + desc);
+                        DialogUtil.closeProgressDialog();
                     }
                 });
     }

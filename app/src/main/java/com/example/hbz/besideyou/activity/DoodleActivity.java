@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.hbz.besideyou.BastActivity;
 import com.example.hbz.besideyou.R;
+import com.example.hbz.besideyou.receiver.VolumeReceiver;
 import com.example.hbz.besideyou.utils.LogUtil;
 import com.example.hbz.besideyou.utils.PhotoUtils;
 import com.example.hbz.besideyou.utils.SDCardPathUtil;
@@ -45,13 +46,15 @@ public class DoodleActivity extends BastActivity {
     private PopupWindow popupWindow;
     private List<Integer> colorList = new ArrayList<>();
 
+    private AlertDialog.Builder normalDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doodle);
-        initView();
 
+        initView();
+        initBackDialog();
         initPopupWindow();
         BitmapFactory.Options op = new BitmapFactory.Options();
         op.inMutable = true;
@@ -64,24 +67,18 @@ public class DoodleActivity extends BastActivity {
 
     @Override
     public void onBackPressed() {
-        /* @setIcon 设置对话框图标
-         * @setTitle 设置对话框标题
-         * @setMessage 设置对话框消息提示
-         * setXXX方法返回Dialog对象，因此可以链式设置属性
-         */
-        final AlertDialog.Builder normalDialog =
-                new AlertDialog.Builder(this);
-//            normalDialog.setIcon(R.drawable.icon_dialog);
-        normalDialog.setTitle("提示")
-                .setMessage("你是要退出涂鸦，还是要切换后台?")
-                .setPositiveButton("切换后台",
-                        (dialog, which) -> moveTaskToBack(false));
-        normalDialog.setNegativeButton("退出涂鸦",
-                (dialog, which) -> finish());
         // 显示
         normalDialog.show();
-
     }
+
+    public void initBackDialog() {
+        normalDialog = new AlertDialog.Builder(this);
+        normalDialog.setTitle("提示")
+                .setMessage("你是要退出涂鸦，还是要切换后台?")
+                .setPositiveButton("切换后台", (dialog, which) -> moveTaskToBack(false))
+                .setNegativeButton("退出涂鸦", (dialog, which) -> finish());
+    }
+
 
     private void initPopupWindow() {
         popupWindow = new PopupWindow(this);

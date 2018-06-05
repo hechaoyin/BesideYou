@@ -51,6 +51,7 @@ import java.util.ArrayList;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
+import static com.example.hbz.besideyou.Constant.WEB_SOCKET_URL;
 import static com.example.webrtc.message.ChannelFileUtil.FILE_BEGIN;
 import static com.example.webrtc.message.ChannelFileUtil.FILE_END;
 import static com.example.webrtc.message.ChannelFileUtil.FILE_RECEIVE_SUCCEED;
@@ -228,7 +229,7 @@ public class WebRtcTestActivity extends AppCompatActivity {
     private void initSocket() {
         URI uri = null;
         try {
-            uri = new URI("http://192.168.1.123:1655");
+            uri = new URI(WEB_SOCKET_URL);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

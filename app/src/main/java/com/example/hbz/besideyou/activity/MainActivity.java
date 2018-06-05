@@ -46,7 +46,7 @@ public class MainActivity extends BastActivity {
         setContentView(R.layout.activity_main);
 
         // 加载联系人数据
-        FriendContactsData.getInstance();
+        FriendContactsData.getInstance().init();
 
         initView();
         initData();

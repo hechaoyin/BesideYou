@@ -15,8 +15,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.hbz.besideyou.R;
+import com.example.hbz.besideyou.activity.AboutUsActivity;
+import com.example.hbz.besideyou.activity.LaboratoryActivity;
 import com.example.hbz.besideyou.activity.LoginActivity;
 import com.example.hbz.besideyou.activity.MyInfoActivity;
+import com.example.hbz.besideyou.activity.SettingActivity;
 import com.example.hbz.besideyou.utils.LogUtil;
 import com.example.hbz.besideyou.utils.StatusBarUtils;
 import com.example.hbz.besideyou.utils.ToastUtil;
@@ -43,7 +46,6 @@ public class MineFragment extends BaseFragment {
     private TextView my_info_name;
     private TextView my_info_id;
     private LinearLayout ll_setting;
-    private LinearLayout ll_about_us;
     private Button btn_account_logout;
 
     private TIMUserProfile userProfile;
@@ -51,7 +53,6 @@ public class MineFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -123,10 +124,13 @@ public class MineFragment extends BaseFragment {
         my_info_id = (TextView) rootView.findViewById(R.id.my_info_id);
 
         ll_setting = (LinearLayout) rootView.findViewById(R.id.ll_setting);
-//        ll_setting.setOnClickListener(this);
+        ll_setting.setOnClickListener(v -> startActivity(new Intent(getContext(), SettingActivity.class)));
 
-        ll_about_us = (LinearLayout) rootView.findViewById(R.id.ll_about_us);
-//        ll_about_us.setOnClickListener(this);
+        LinearLayout ll_about_us = (LinearLayout) rootView.findViewById(R.id.ll_about_us);
+        ll_about_us.setOnClickListener(v -> startActivity(new Intent(getContext(), AboutUsActivity.class)));
+
+        LinearLayout ll_laboratory = (LinearLayout) rootView.findViewById(R.id.ll_laboratory);
+        ll_laboratory.setOnClickListener(v -> startActivity(new Intent(getContext(), LaboratoryActivity.class)));
 
         btn_account_logout = (Button) rootView.findViewById(R.id.btn_account_logout);
         btn_account_logout.setOnClickListener(v -> accountLogout());

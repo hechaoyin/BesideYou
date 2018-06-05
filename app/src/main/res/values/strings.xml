@@ -85,4 +85,6 @@
     <string name="web_socket_room_input">请输入加入的房间</string>
     <string name="add_room">加入房间</string>
     <string name="offline_doodle">离线涂鸦</string>
+    <string name="room_number_str">房间名字: </string>
+    <string name="leave_out_room">离开房间</string>
 </resources>

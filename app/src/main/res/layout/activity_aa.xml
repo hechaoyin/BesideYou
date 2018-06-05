@@ -14,16 +14,19 @@
         android:id="@+id/tv_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btn_webrtc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="wevrtc" />
+
     <Button
         android:id="@+id/btn_popup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="弹窗动画" />
+
     <Button
         android:id="@+id/btn_back_activity"
         android:layout_width="match_parent"
@@ -35,4 +38,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="测试界面" />
+
+    <com.example.hbz.besideyou.view.floatwindow.SectorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#6ccccccc">
+
+        <com.example.hbz.besideyou.view.CircleImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@color/red" />
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_translucence_oval"
+            android:gravity="center"
+            android:text="1" />
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_translucence_oval"
+            android:gravity="center"
+            android:text="2" />
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_translucence_oval"
+            android:gravity="center"
+            android:text="3" />
+
+
+    </com.example.hbz.besideyou.view.floatwindow.SectorLayout>
 </LinearLayout>

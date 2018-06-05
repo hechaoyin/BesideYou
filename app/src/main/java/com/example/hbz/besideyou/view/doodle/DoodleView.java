@@ -67,11 +67,11 @@ public class DoodleView extends View {
             float tX1 = src2Point(cx, mTranslationX); // (x1,y1) 对应的原图片的坐标X
             float tY1 = src2Point(cy, mTranslationY); // (x1,y1) 对应的原图片的坐标Y
 
-            mScale *= k;
-            mTranslationX = cx / mScale - tX1;
+            mScale *= k; // 放大系数
+            mTranslationX = cx / mScale - tX1;// 放大后，相对原来的偏移量也放大
             mTranslationY = cy / mScale - tY1;
 
-            mTranslationX += dx / mScale;
+            mTranslationX += dx / mScale;// 实际图片的偏移量
             mTranslationY += dy / mScale;
 
             invalidate();

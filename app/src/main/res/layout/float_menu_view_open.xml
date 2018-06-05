@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.example.hbz.besideyou.view.floatwindow.SectorLayout
+        android:id="@+id/menu_open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_menu_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_circle_back_blue" />
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_translucence_oval"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_translucence_oval"
+            android:text="2" />
+
+        <TextView
+
+            android:id="@+id/tv_three"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/shape_translucence_oval"
+            android:text="3" />
+
+    </com.example.hbz.besideyou.view.floatwindow.SectorLayout>
+</LinearLayout>

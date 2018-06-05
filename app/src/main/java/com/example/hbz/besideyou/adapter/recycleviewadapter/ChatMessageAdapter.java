@@ -61,6 +61,8 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatViewHolder> {
                 TIMTextElem textElem = (TIMTextElem) e;
                 holder1.tv_msg_text.setText(textElem.getText());
             }
+
+
         }
     }
 

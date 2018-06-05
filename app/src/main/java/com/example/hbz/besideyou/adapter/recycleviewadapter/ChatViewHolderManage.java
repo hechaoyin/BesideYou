@@ -36,10 +36,12 @@ public class ChatViewHolderManage {
 
     public static class TextViewHolder extends ChatViewHolder {
         public TextView tv_msg_text;
+        public TextView tv_msg_name;
 
         public TextViewHolder(View itemView) {
             super(itemView);
             tv_msg_text = itemView.findViewById(R.id.tv_msg_text);
+            tv_msg_name = itemView.findViewById(R.id.tv_msg_name);
         }
     }
 

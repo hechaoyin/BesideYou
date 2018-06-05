@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mark_read"
+        android:title="标志已读" />
+    <item
+        android:id="@+id/overhead_chat"
+        android:title="顶置聊天" />
+    <item
+        android:id="@+id/delete_chat"
+        android:title="删除该聊天" />
+</menu>

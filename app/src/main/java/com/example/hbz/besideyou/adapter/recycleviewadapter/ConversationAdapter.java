@@ -11,9 +11,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.hbz.besideyou.R;
 import com.example.hbz.besideyou.adapter.recycleviewadapter.listener.OnItemClickListener;
+import com.example.hbz.besideyou.adapter.recycleviewadapter.listener.OnItemLongClickListener;
 import com.example.hbz.besideyou.im.bean.ConversationBean;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -23,10 +23,11 @@ import java.util.List;
  * @Date: 2018/3/22 11:49
  */
 
-public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder>implements View.OnClickListener {
+public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapter.ConversationViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
     private List<ConversationBean> timConversations;
     private OnItemClickListener onItemClickListener;
+    private OnItemLongClickListener onItemLongClickListener;
 
     public ConversationAdapter(List<ConversationBean> timConversations) {
         this.timConversations = timConversations;
@@ -62,11 +63,23 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         this.onItemClickListener = onItemClickListener;
     }
 
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
     @Override
     public void onClick(View v) {
-        if (onItemClickListener!=null){
+        if (onItemClickListener != null) {
             onItemClickListener.onItemClick(v, (Integer) v.getTag());
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (onItemLongClickListener != null) {
+            onItemLongClickListener.onLongClick(v, (Integer) v.getTag());
+        }
+        return false;
     }
 
     class ConversationViewHolder extends RecyclerView.ViewHolder {
@@ -82,6 +95,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
             tv_time = itemView.findViewById(R.id.tv_time);
             tv_message = itemView.findViewById(R.id.tv_message);
             itemView.setOnClickListener(ConversationAdapter.this);
+            itemView.setOnLongClickListener(ConversationAdapter.this);
         }
     }
 }

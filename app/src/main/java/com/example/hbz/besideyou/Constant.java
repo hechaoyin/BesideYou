@@ -11,7 +11,7 @@ public class Constant {
 
     public static final boolean PRINT_LOG = true;// 是否打印日志
 
-    public static final String WEB_SOCKET_URL = "http://192.168.1.52:1655";// WebSocket服务器地址
+    public static final String WEB_SOCKET_URL = "http://172.30.20.178:1655";// WebSocket服务器地址
 
     public static final String CHECK_PHONE_RULE = "^[1]([3][0-9]{1}|59|58|88|89)[0-9]{8}$";
 

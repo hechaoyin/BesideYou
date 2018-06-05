@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,17 +16,24 @@ import com.example.hbz.besideyou.R;
 import com.example.hbz.besideyou.activity.ChatActivity;
 import com.example.hbz.besideyou.adapter.recycleviewadapter.ConversationAdapter;
 import com.example.hbz.besideyou.adapter.recycleviewadapter.listener.OnItemClickListener;
+import com.example.hbz.besideyou.adapter.recycleviewadapter.listener.OnItemLongClickListener;
 import com.example.hbz.besideyou.im.bean.ConversationBean;
 import com.example.hbz.besideyou.utils.StatusBarUtils;
+import com.example.hbz.besideyou.utils.ToastUtil;
+import com.example.im.data.FriendContactsData;
 import com.tencent.TIMConversation;
+import com.tencent.TIMConversationType;
 import com.tencent.TIMManager;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import static com.example.hbz.besideyou.activity.ChatActivity.CONVERSATION_IDENTIFIER_STR;
 import static com.example.hbz.besideyou.activity.ChatActivity.CONVERSATION_TYPE_C2C;
 import static com.example.hbz.besideyou.activity.ChatActivity.CONVERSATION_TYPE_STR;
+import static com.example.im.data.FriendContactsData.NotifyType.REFRESH;
 
 
 /**
@@ -35,7 +43,7 @@ import static com.example.hbz.besideyou.activity.ChatActivity.CONVERSATION_TYPE_
  * @Date: 2018/3/17 11:45
  */
 
-public class ConversationFragment extends BaseFragment implements OnItemClickListener {
+public class ConversationFragment extends BaseFragment implements OnItemClickListener, OnItemLongClickListener, Observer {
     private View rootView;
     private View top_view;
 
@@ -48,6 +56,13 @@ public class ConversationFragment extends BaseFragment implements OnItemClickLis
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FriendContactsData.getInstance().addObserver(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        FriendContactsData.getInstance().deleteObserver(this);
+        super.onDestroy();
     }
 
     @Nullable
@@ -73,6 +88,7 @@ public class ConversationFragment extends BaseFragment implements OnItemClickLis
         rv_message_list.setLayoutManager(new LinearLayoutManager(getContext()));
         conversationAdapter = new ConversationAdapter(timConversations);
         conversationAdapter.setOnItemClickListener(this);
+        conversationAdapter.setOnItemLongClickListener(this);
         rv_message_list.setAdapter(conversationAdapter);
 
         srl_refresh_message = (SwipeRefreshLayout) rootView.findViewById(R.id.srl_refresh_message);
@@ -122,4 +138,49 @@ public class ConversationFragment extends BaseFragment implements OnItemClickLis
         intent.putExtra(CONVERSATION_IDENTIFIER_STR, identifier);// 会话标识
         startActivity(intent);
     }
+
+    @Override
+    public void onLongClick(View view, int position) {
+        PopupMenu popup = new PopupMenu(getActivity(), view);//第二个参数是绑定的那个view
+        popup.getMenuInflater().inflate(R.menu.conversation_popup_menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.mark_read:
+                    break;
+                case R.id.overhead_chat: // 消息顶置
+                    ToastUtil.showShortToast("功能未开放");
+                    break;
+                case R.id.delete_chat: // 删除该聊天
+                    deleteChat(position);
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        });
+        //显示
+        popup.show();
+    }
+
+    private void deleteChat(int position) {
+        if(timConversations==null||timConversations.size()<=position){
+            return;
+        }
+        ConversationBean conversationBean = timConversations.get(position);
+        TIMManager.getInstance().deleteConversation(TIMConversationType.C2C, conversationBean.getConversation().getPeer());
+        timConversations.remove(position);
+        conversationAdapter.notifyItemRemoved(position);
+
+    }
+
+    @Override
+    public void update(Observable o, Object arg) { // 好友联系人刷新，同时也刷新会话
+        if (arg instanceof FriendContactsData.NotifyCmd) {
+            FriendContactsData.NotifyCmd notifyCmd = (FriendContactsData.NotifyCmd) arg;
+            if (notifyCmd.type.equals(REFRESH)) {
+                refreshConversation();
+            }
+        }
+    }
+
 }

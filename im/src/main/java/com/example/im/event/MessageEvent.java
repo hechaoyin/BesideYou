@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Observable;
 
 /**
- * 消息通知事件，上层界面可以订阅此事件
+     * 消息通知事件，上层界面可以订阅此事件
  */
 public class MessageEvent extends Observable implements TIMMessageListener {
 
