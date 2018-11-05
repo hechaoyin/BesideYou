@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
+import com.example.hbz.besideyou.application.BaseApplication;
 import com.example.hbz.besideyou.im.MyIMManager;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -16,7 +17,7 @@ import com.squareup.leakcanary.RefWatcher;
  * @Date: 2018/3/16 10:01
  */
 
-public class BesideYouApp extends MultiDexApplication {
+public class BesideYouApp extends BaseApplication {
 
     private static BesideYouApp context;
     private static RefWatcher refWatcher;
@@ -48,7 +49,7 @@ public class BesideYouApp extends MultiDexApplication {
     }
 
     @Override
-    protected void attachBaseContext(Context base) {
+    public void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }

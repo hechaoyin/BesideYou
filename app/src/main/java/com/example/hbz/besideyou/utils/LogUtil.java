@@ -21,11 +21,11 @@ public class LogUtil {
      * 默认的打印信息
      */
     private static String defaultMsg = "";
-    public static final int V = 1;
-    public static final int D = 2;
-    public static final int I = 3;
-    public static final int W = 4;
-    public static final int E = 5;
+    private static final int V = 1;
+    private static final int D = 2;
+    private static final int I = 3;
+    private static final int W = 4;
+    private static final int E = 5;
 
     /**
      * 初始化控制变量
