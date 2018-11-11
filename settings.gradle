@@ -1,1 +1,1 @@
-include ':app', ':im', ':webrtc', ':cosxml', ':aapptest', 'imsdk'
+include ':app', ':im', ':webrtc', ':cosxml', ':apptest', 'imsdk'
